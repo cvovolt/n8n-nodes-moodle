@@ -10,13 +10,25 @@ export async function coreCourseGetCategoriesBody(this: IExecuteSingleFunctions,
     return requestOptions;
 }
 
-export async function coreCourseGetCourses(this: IExecuteSingleFunctions, requestOptions: IHttpRequestOptions): Promise<IHttpRequestOptions> {
+export async function coreCourseGetCoursesBody(this: IExecuteSingleFunctions, requestOptions: IHttpRequestOptions): Promise<IHttpRequestOptions> {
     const formData = new FormData();
     const ids = ((this.getNodeParameter('ids') as string) || '').trim();
     if (ids) {
         ids.split(',').forEach((id, index) => {
             formData.append(`options[ids][${index}]`, id.trim());
         });
+    }
+    requestOptions.body = formData;
+    return requestOptions;
+}
+
+export async function coreCourseGetCoursesByFieldBody(this: IExecuteSingleFunctions, requestOptions: IHttpRequestOptions): Promise<IHttpRequestOptions> {
+    const formData = new FormData();
+    const field = this.getNodeParameter('course_field') as string;
+    const value = ((this.getNodeParameter('value') as string)  || '').trim();
+    if (value) {
+        formData.append('field', field);
+        formData.append('value', value);
     }
     requestOptions.body = formData;
     return requestOptions;

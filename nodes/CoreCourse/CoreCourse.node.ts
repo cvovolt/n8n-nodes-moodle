@@ -1,7 +1,8 @@
 import { INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { description } from '../description';
 import { coreCourseGetCategoriesBody,
-         coreCourseGetCourses
+         coreCourseGetCoursesBody,
+         coreCourseGetCoursesByFieldBody
 } from '../parameterBody';
 
 export class CoreCourse implements INodeType {
@@ -47,10 +48,25 @@ export class CoreCourse implements INodeType {
                                 },
                             },
                             send: {
-                                preSend: [coreCourseGetCourses]
+                                preSend: [coreCourseGetCoursesBody]
                             },
                         },
                     },
+                    {
+                        name: 'core_course_get_courses_by_field',
+                        value: 'core_course_get_courses_by_field',
+                        description: 'Get courses by field',
+                        routing: {
+                            request: {
+                                qs: {
+                                    wsfunction: 'core_course_get_courses_by_field',
+                                },
+                            },
+                            send: {
+                                preSend: [coreCourseGetCoursesByFieldBody]
+                            },
+                        },
+                    }
                 ],
                 default: 'core_course_get_categories',
                 description: 'The operation to perform.',
@@ -108,7 +124,7 @@ export class CoreCourse implements INodeType {
                 },
             },
             {
-                displayName: 'IDs',
+                displayName: 'IDs (comma separated)',
                 name: 'ids',
                 type: 'string',
                 required: false,
@@ -124,6 +140,62 @@ export class CoreCourse implements INodeType {
                     },
                 },
             },
+            {
+                displayName: 'Field',
+                name: 'course_field',
+                type: 'options',
+                options: [
+                    {
+                        name: 'Course ID',
+                        value: 'id',
+                    },
+                    {
+                        name: 'IDs (comma separated)',
+                        value: 'ids',
+                    },
+                    {
+                        name: 'Short Name',
+                        value: 'shortname',
+                    },
+                    {
+                        name: 'ID number',
+                        value: 'idnumber',
+                    },
+                    {
+                        name: 'Category ID',
+                        value: 'category',
+                    },
+                    {
+                        name: 'Section ID',
+                        value: 'sectionid',
+                    }
+                ],
+                default: 'id',
+                description: 'The field to get courses by',
+                displayOptions: {
+                    show: {
+                        operation: [
+                            'core_course_get_courses_by_field',
+                        ],
+                    },
+                },
+            },  
+            {
+                displayName: 'Value',
+                name: 'value',
+                type: 'string',
+                required: false,
+                default: '',
+                description: 'The value of the field',
+                requiresDataPath: 'multiple',
+                displayOptions: {
+                    show: {
+                        operation: [
+                            'core_course_get_courses_by_field',
+                        ],
+                    },
+                },
+            }
         ],
     };
 }
