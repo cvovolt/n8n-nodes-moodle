@@ -10,6 +10,18 @@ export async function coreCourseGetCategoriesBody(this: IExecuteSingleFunctions,
     return requestOptions;
 }
 
+export async function coreCourseGetCourses(this: IExecuteSingleFunctions, requestOptions: IHttpRequestOptions): Promise<IHttpRequestOptions> {
+    const formData = new FormData();
+    const ids = ((this.getNodeParameter('ids') as string) || '').trim();
+    if (ids) {
+        ids.split(',').forEach((id, index) => {
+            formData.append(`options[ids][${index}]`, id.trim());
+        });
+    }
+    requestOptions.body = formData;
+    return requestOptions;
+}
+
 function appendCriteria(this: IExecuteSingleFunctions, paramNames: Array<string>, formData: FormData): FormData {
     paramNames.forEach((key, index) => {
         const value = ((this.getNodeParameter(key) as string) || '').trim();

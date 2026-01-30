@@ -1,6 +1,8 @@
 import { INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { description } from '../description';
-import { coreCourseGetCategoriesBody } from '../parameterBody';
+import { coreCourseGetCategoriesBody,
+         coreCourseGetCourses
+} from '../parameterBody';
 
 export class CoreCourse implements INodeType {
     description: INodeTypeDescription = {
@@ -34,10 +36,27 @@ export class CoreCourse implements INodeType {
                             },
                         },
                     },
+                    {
+                        name: 'core_course_get_courses',
+                        value: 'core_course_get_courses',
+                        description: 'Get courses',
+                        routing: {
+                            request: {
+                                qs: {
+                                    wsfunction: 'core_course_get_courses',
+                                },
+                            },
+                            send: {
+                                preSend: [coreCourseGetCourses]
+                            },
+                        },
+                    },
                 ],
                 default: 'core_course_get_categories',
                 description: 'The operation to perform.',
             },
+            
+          
 
             // Add additional parameters here as needed
             {
@@ -87,7 +106,24 @@ export class CoreCourse implements INodeType {
                         ],
                     },
                 },
-            }
+            },
+            {
+                displayName: 'IDs',
+                name: 'ids',
+                type: 'string',
+                required: false,
+                default: '',
+                requiresDataPath: 'multiple',
+                hint: 'Comma separated list of IDs',
+                description: 'ID Numbers',
+                displayOptions: {
+                    show: {
+                        operation: [
+                            'core_course_get_courses',
+                        ],
+                    },
+                },
+            },
         ],
     };
 }
