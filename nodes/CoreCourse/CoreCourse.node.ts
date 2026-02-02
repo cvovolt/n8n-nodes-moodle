@@ -20,19 +20,21 @@ export class CoreCourse implements INodeType {
                 type: 'options',
                 options: [
                     coreCourse.getCategoriesOperation,
-                    coreCourse.getCourses,
-                    coreCourse.getCoursesByField,
-                    coreCourse.duplicateCourse,
+                    coreCourse.getCoursesOperation,
+                    coreCourse.getCoursesByFieldOperation,
+                    coreCourse.duplicateCourseOperation,
+                    coreCourse.createCategoriesOperation,
                 ],
                 default: coreCourse.getCategoriesOperation.value,
                 description: 'The operation to perform.',
             },
 
-            // Add additional parameters here as needed
+            // Parameters
             ...coreCourse.getCategoriesProperties,
             ...coreCourse.getCoursesProperties,
             ...coreCourse.getCoursesByFieldProperties,
             ...coreCourse.duplicateCourseProperties,
+            ...coreCourse.createCategoriesProperties,
         ],
     };
 }

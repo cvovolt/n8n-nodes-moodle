@@ -2,22 +2,21 @@ import { IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties, INodePro
 import FormData from "form-data";
 
 export const getCategoriesOperation: INodePropertyOptions = 
-    {
-        name: 'core_course_get_categories',
-        value: 'core_course_get_categories',
-        description: 'Get course categories',
-        routing: {
-            request: {
-                qs: {
-                    wsfunction: 'core_course_get_categories',
-                },
-            },
-            send: {
-                preSend: [requestOptions]
+{
+    name: 'core_course_get_categories',
+    value: 'core_course_get_categories',
+    description: 'Get course categories',
+    routing: {
+        request: {
+            qs: {
+                wsfunction: 'core_course_get_categories',
             },
         },
-    }
-;
+        send: {
+            preSend: [requestOptions]
+        },
+    },
+};
 
 
 export const getCategoriesProperties:INodeProperties[] = 

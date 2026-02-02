@@ -1,7 +1,7 @@
 import { IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties, INodePropertyOptions } from "n8n-workflow";
 import FormData from "form-data";
 
-export const getCourses: INodePropertyOptions = 
+export const getCoursesOperation: INodePropertyOptions = 
 {
     name: 'core_course_get_courses',
     value: 'core_course_get_courses',
