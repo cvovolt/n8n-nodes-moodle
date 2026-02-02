@@ -34,7 +34,7 @@
 			"dist/credentials/MoodleApi.credentials.js"
 		],
 		"nodes": [
-			"dist/nodes/CoreCourseGetCategories/CoreCourse.node.js"
+			"dist/nodes/Moodle/Moodle.node.js"
 		]
 	},
 	"devDependencies": {

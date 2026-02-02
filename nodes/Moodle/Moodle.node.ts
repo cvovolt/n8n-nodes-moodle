@@ -1,6 +1,6 @@
 import { INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { description } from '../description';
-import * as coreCourse from './operations';
+import * as coreCourse from './coreCourse';
 
 export class CoreCourse implements INodeType {
     description: INodeTypeDescription = {
