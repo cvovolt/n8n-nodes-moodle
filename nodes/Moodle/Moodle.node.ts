@@ -1,40 +1,53 @@
 import { INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { description } from '../description';
-import * as coreCourse from './coreCourse';
+import { coreCourseResource } from './resources/coreCourse';
 
-export class CoreCourse implements INodeType {
+export class Moodle implements INodeType {
     description: INodeTypeDescription = {
-        ...description,
-        displayName: 'Moodle Core Course',
-        name: 'moodleCoreCourse',
-        description: 'Moodle Core Course operations',
+        displayName: 'Moodle Rest API',
+        name: 'moodleRestApi',
+        icon: 'file:../../icons/moodle.svg',
+        group: ['transform'],   //only used for trigger nodes
+        version: 1,
+        description: 'Moodle Rest API Node',
         defaults: {
-            name: 'Moodle Core Course',
+            name: 'Moodle Rest API',
+        },
+        //subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
+        inputs: ['main'],
+        outputs: ['main'],
+        credentials: [
+            {
+                name: 'MoodleApi',
+                required: true,
+            },
+        ],
+        requestDefaults: {
+            baseURL: '={{$credentials.url}}/webservice/rest/server.php',
+            qs: {
+                moodlewsrestformat: 'json',
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                Accept: 'application/json',
+            },
+            method: 'POST',
         },
 
         properties: [
-            // Operations
+            // Resources:
             {
-                displayName: 'Operation',
-                name: 'operation',
+                displayName: 'Resource',
+                name: 'resource',
                 type: 'options',
+                noDataExpression: true,
                 options: [
-                    coreCourse.getCategoriesOperation,
-                    coreCourse.getCoursesOperation,
-                    coreCourse.getCoursesByFieldOperation,
-                    coreCourse.duplicateCourseOperation,
-                    coreCourse.createCategoriesOperation,
+                    { name: 'Core Course', value: 'coreCourse' },
                 ],
-                default: coreCourse.getCategoriesOperation.value,
-                description: 'The operation to perform.',
+                default: 'coreCourse',
+                description: 'The resource to operate on.',
             },
 
-            // Parameters
-            ...coreCourse.getCategoriesProperties,
-            ...coreCourse.getCoursesProperties,
-            ...coreCourse.getCoursesByFieldProperties,
-            ...coreCourse.duplicateCourseProperties,
-            ...coreCourse.createCategoriesProperties,
+            ...coreCourseResource,
         ],
     };
 }

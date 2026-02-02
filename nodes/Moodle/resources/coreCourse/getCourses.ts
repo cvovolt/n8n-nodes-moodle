@@ -3,7 +3,7 @@ import FormData from "form-data";
 
 export const getCoursesOperation: INodePropertyOptions = 
 {
-    name: 'core_course_get_courses',
+    name: 'Get Courses',
     value: 'core_course_get_courses',
     description: 'Get courses',
     routing: {

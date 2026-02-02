@@ -3,7 +3,7 @@ import FormData from "form-data";
 
 export const duplicateCourseOperation: INodePropertyOptions = 
 {
-    name: 'core_course_duplicate_course',
+    name: 'Duplicate Course',
     value: 'core_course_duplicate_course',
     description: 'Duplicate a course',
     routing: {
