@@ -24,7 +24,7 @@ export const coreCourseResource: INodeProperties[] = [
             duplicateCourseOperation,
             createCategoriesOperation,
         ],
-        default: getCategoriesOperation.value,
+        default: '',
     },
 
     // Properties
