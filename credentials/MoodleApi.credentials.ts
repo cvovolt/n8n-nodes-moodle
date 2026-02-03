@@ -1,5 +1,6 @@
 import {
     IAuthenticateGeneric,
+    Icon,
     ICredentialTestRequest,
     ICredentialType,
     INodeProperties,
@@ -7,7 +8,7 @@ import {
 
 export class MoodleApi implements ICredentialType {
     name = 'moodleApi';
-
+    icon = 'file:../icons/moodle.svg' as Icon;
     displayName = 'Moodle API';
     documentationUrl = 'https://docs.moodle.org/501/en/Using_web_services';
     properties: INodeProperties[] = [
