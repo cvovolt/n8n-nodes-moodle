@@ -1,5 +1,5 @@
 import { IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties, INodePropertyOptions } from "n8n-workflow";
-import FormData from "form-data";
+import { SimpleFormData } from "../../utils/SimpleFormData";
 
 export const getCategoriesOperation: INodePropertyOptions = 
 {
@@ -68,7 +68,7 @@ export const getCategoriesProperties:INodeProperties[] =
 ]
 
 async function requestOptions(this: IExecuteSingleFunctions, requestOptions: IHttpRequestOptions): Promise<IHttpRequestOptions> {
-    const formData = new FormData();
+    const formData = new SimpleFormData();
     const paramNames = ['parent', 'idnumber'];
     paramNames.forEach((key, index) => {
         const value = ((this.getNodeParameter(key) as string) || '').trim();
@@ -79,6 +79,10 @@ async function requestOptions(this: IExecuteSingleFunctions, requestOptions: IHt
     });
     const addSubcategories = this.getNodeParameter('addsubcategories') as boolean;
     formData.append('addsubcategories', addSubcategories ? '1' : '0');
-    requestOptions.body = formData;
+    requestOptions.body = formData.getBody();
+    requestOptions.headers = {
+        ...requestOptions.headers,
+        'Content-Type': formData.getContentType(),
+    };
     return requestOptions;
 }

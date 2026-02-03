@@ -1,5 +1,5 @@
 import { IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties, INodePropertyOptions } from "n8n-workflow";
-import FormData from "form-data";
+import { SimpleFormData } from "../../utils/SimpleFormData";
 
 export const getCoursesByFieldOperation: INodePropertyOptions = 
 {
@@ -76,15 +76,19 @@ export const getCoursesByFieldProperties:INodeProperties[] =
     },
 ]
 
-async function requestOptions(this: IExecuteSingleFunctions, requestOptions: IHttpRequestOptions): Promise<IHttpRequestOptions> 
+async function requestOptions(this: IExecuteSingleFunctions, requestOptions: IHttpRequestOptions): Promise<IHttpRequestOptions>
 {
-    const formData = new FormData();
+    const formData = new SimpleFormData();
     const field = this.getNodeParameter('course_field') as string;
     const value = ((this.getNodeParameter('value') as string)  || '').trim();
     if (value) {
         formData.append('field', field);
         formData.append('value', value);
     }
-    requestOptions.body = formData;
+    requestOptions.body = formData.getBody();
+    requestOptions.headers = {
+        ...requestOptions.headers,
+        'Content-Type': formData.getContentType(),
+    };
     return requestOptions;
 }
