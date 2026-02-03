@@ -3,7 +3,7 @@ import { coreCourseResource } from './resources/coreCourse';
 
 export class Moodle implements INodeType {
     description: INodeTypeDescription = {
-        displayName: 'Moodle Rest API',
+        displayName: 'Moodle',
         name: 'moodle',
         icon: 'file:../../icons/moodle.svg',
         group: ['transform'],   //only used for trigger nodes

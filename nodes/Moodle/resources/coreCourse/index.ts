@@ -11,7 +11,6 @@ export const coreCourseResource: INodeProperties[] = [
         displayName: 'Operation',
         name: 'operation',
         type: 'options',
-								default: '',
         noDataExpression: true,
         displayOptions: {
             show: {

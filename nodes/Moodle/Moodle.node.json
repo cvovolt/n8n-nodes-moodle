@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-moodle.CoreCourse",
+	"node": "n8n-nodes-moodle.moodle",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": [
