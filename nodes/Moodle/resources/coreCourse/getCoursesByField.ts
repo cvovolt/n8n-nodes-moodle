@@ -5,7 +5,6 @@ export const getCoursesByFieldOperation: INodePropertyOptions =
 {
     name: 'Get Courses by Field',
     value: 'core_course_get_courses_by_field',
-    description: 'Get courses by field',
     routing: {
         request: {
             qs: {
@@ -26,29 +25,29 @@ export const getCoursesByFieldProperties:INodeProperties[] =
         type: 'options',
         options: [
             {
+                name: 'Category ID',
+                value: 'category',
+            },
+            {
                 name: 'Course ID',
                 value: 'id',
             },
             {
-                name: 'IDs (comma separated)',
+                name: 'ID Number',
+                value: 'idnumber',
+            },
+            {
+                name: 'IDs (Comma Separated)',
                 value: 'ids',
+            },
+            {
+                name: 'Section ID',
+                value: 'sectionid',
             },
             {
                 name: 'Short Name',
                 value: 'shortname',
             },
-            {
-                name: 'ID number',
-                value: 'idnumber',
-            },
-            {
-                name: 'Category ID',
-                value: 'category',
-            },
-            {
-                name: 'Section ID',
-                value: 'sectionid',
-            }
         ],
         default: 'id',
         description: 'The field to get courses by',
@@ -64,7 +63,6 @@ export const getCoursesByFieldProperties:INodeProperties[] =
         displayName: 'Value',
         name: 'value',
         type: 'string',
-        required: false,
         default: '',
         description: 'The value of the field',
         requiresDataPath: 'multiple',

@@ -1,15 +1,15 @@
 import {
     IAuthenticateGeneric,
+    ICredentialTestRequest,
     ICredentialType,
     INodeProperties,
 } from 'n8n-workflow';
 
 export class MoodleApi implements ICredentialType {
-    name = 'MoodleApi';
+    name = 'moodleApi';
 
     displayName = 'Moodle API';
-    
-    documentationUrl = 'https://moodledev.io/';
+    documentationUrl = 'https://docs.moodle.org/501/en/Using_web_services';
     properties: INodeProperties[] = [
         {
             displayName: 'Moodle URL',
@@ -37,6 +37,17 @@ export class MoodleApi implements ICredentialType {
             qs: {
                 wstoken: '={{$credentials.token}}',
              },
+        },
+    };
+
+    test: ICredentialTestRequest = {
+        request: {
+            method: 'POST',
+            url: '={{$credentials.url}}/webservice/rest/server.php',
+            qs: {
+                moodlewsrestformat: 'json',
+                wsfunction: 'core_webservice_get_site_info',
+            },
         },
     };
 }

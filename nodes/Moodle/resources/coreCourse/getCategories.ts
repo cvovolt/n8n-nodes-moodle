@@ -25,7 +25,6 @@ export const getCategoriesProperties:INodeProperties[] =
         displayName: 'Parent ID',
         name: 'parent',
         type: 'string',
-        required: false,
         default: '',
         requiresDataPath: 'single',
         description: 'The ID of the parent',
@@ -38,13 +37,11 @@ export const getCategoriesProperties:INodeProperties[] =
         },
     },
     {
-        displayName: 'ID number',
+        displayName: 'ID Number',
         name: 'idnumber',
         type: 'string',
-        required: false,
         default: '',
         requiresDataPath: 'single',
-        description: 'The ID number',
         displayOptions: {
             show: {
                 operation: [
@@ -54,10 +51,9 @@ export const getCategoriesProperties:INodeProperties[] =
         },
     },
     {
-        displayName: 'Add sub categories',
+        displayName: 'Add Sub Categories',
         name: 'addsubcategories',
         type: 'boolean',
-        required: false,
         default: true,
         requiresDataPath: 'single',
         description: 'Whether to include sub categories',
@@ -72,7 +68,7 @@ export const getCategoriesProperties:INodeProperties[] =
 ]
 
 async function requestOptions(this: IExecuteSingleFunctions, requestOptions: IHttpRequestOptions): Promise<IHttpRequestOptions> {
-    let formData = new FormData();
+    const formData = new FormData();
     const paramNames = ['parent', 'idnumber'];
     paramNames.forEach((key, index) => {
         const value = ((this.getNodeParameter(key) as string) || '').trim();

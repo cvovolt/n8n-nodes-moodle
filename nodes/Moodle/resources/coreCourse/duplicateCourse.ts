@@ -92,7 +92,7 @@ export const duplicateCourseProperties:INodeProperties[] =
         },   
     },
     {
-        displayName: 'Include course activities',
+        displayName: 'Include Course Activities',
         name: 'activities',
         type: 'boolean',
         default: true,
@@ -106,7 +106,7 @@ export const duplicateCourseProperties:INodeProperties[] =
         },
     },
     {
-        displayName: 'Include course blocks',
+        displayName: 'Include Course Blocks',
         name: 'blocks',
         type: 'boolean',
         default: true,
@@ -120,7 +120,7 @@ export const duplicateCourseProperties:INodeProperties[] =
         },
     },
     {
-        displayName: 'Include course filters',
+        displayName: 'Include Course Filters',
         name: 'filters',
         type: 'boolean',
         default: true,
@@ -134,7 +134,7 @@ export const duplicateCourseProperties:INodeProperties[] =
         },
     },
     {
-        displayName: 'Include course users',
+        displayName: 'Include Course Users',
         name: 'users',
         type: 'boolean',
         default: false,
@@ -148,7 +148,7 @@ export const duplicateCourseProperties:INodeProperties[] =
         },
     },
     {
-        displayName: 'Include enrolment methods',
+        displayName: 'Include Enrolment Methods',
         name: 'enrolment',
         type: 'boolean',
         default: true,
@@ -162,7 +162,7 @@ export const duplicateCourseProperties:INodeProperties[] =
         },  
     },
     {
-        displayName: 'Include role assignments',
+        displayName: 'Include Role Assignments',
         name: 'role_assignments',
         type: 'boolean',
         default: false,
@@ -176,7 +176,7 @@ export const duplicateCourseProperties:INodeProperties[] =
         },
     },
     {
-        displayName: 'Include user comments',
+        displayName: 'Include User Comments',
         name: 'comments',
         type: 'boolean',
         default: false,
@@ -190,7 +190,7 @@ export const duplicateCourseProperties:INodeProperties[] =
         },
     },
     {
-        displayName: 'Include user course completion data',
+        displayName: 'Include User Course Completion Data',
         name: 'userscompletion',
         type: 'boolean',
         default: false,
@@ -204,7 +204,7 @@ export const duplicateCourseProperties:INodeProperties[] =
         },
     },
     {
-        displayName: 'Include logs',
+        displayName: 'Include Logs',
         name: 'logs',
         type: 'boolean',
         default: false,
@@ -218,7 +218,7 @@ export const duplicateCourseProperties:INodeProperties[] =
         },
     },
     {
-        displayName: 'Include gradebook history',
+        displayName: 'Include Gradebook History',
         name: 'grade_histories',
         type: 'boolean',
         default: false,

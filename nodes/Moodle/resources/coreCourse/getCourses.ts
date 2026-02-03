@@ -5,7 +5,6 @@ export const getCoursesOperation: INodePropertyOptions =
 {
     name: 'Get Courses',
     value: 'core_course_get_courses',
-    description: 'Get courses',
     routing: {
         request: {
             qs: {
@@ -21,10 +20,9 @@ export const getCoursesOperation: INodePropertyOptions =
 export const getCoursesProperties:INodeProperties[] = 
 [
     {
-        displayName: 'IDs (comma separated)',
+        displayName: 'IDs (Comma Separated)',
         name: 'ids',
         type: 'string',
-        required: false,
         default: '',
         requiresDataPath: 'multiple',
         hint: 'Comma separated list of IDs',

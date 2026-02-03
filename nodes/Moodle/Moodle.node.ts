@@ -4,10 +4,11 @@ import { coreCourseResource } from './resources/coreCourse';
 export class Moodle implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'Moodle Rest API',
-        name: 'moodleRestApi',
+        name: 'moodle',
         icon: 'file:../../icons/moodle.svg',
         group: ['transform'],   //only used for trigger nodes
         version: 1,
+		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
         description: 'Moodle Rest API Node',
         defaults: {
             name: 'Moodle',
@@ -17,7 +18,7 @@ export class Moodle implements INodeType {
         outputs: ['main'],
         credentials: [
             {
-                name: 'MoodleApi',
+                name: 'moodleApi',
                 required: true,
             },
         ],
@@ -44,10 +45,10 @@ export class Moodle implements INodeType {
                     { name: 'Core Course', value: 'coreCourse' },
                 ],
                 default: 'coreCourse',
-                description: 'The resource to operate on.',
             },
 
             ...coreCourseResource,
         ],
+		usableAsTool: true,
     };
 }

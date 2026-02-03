@@ -39,7 +39,7 @@ export const createCategoriesProperties:INodeProperties[] =
 
 async function requestOptions(this: IExecuteSingleFunctions, requestOptions: IHttpRequestOptions): Promise<IHttpRequestOptions> {
     const formData = new FormData();
-    const categories = this.getNodeParameter('categoriesArray') as Array<Object>;
+    const categories = this.getNodeParameter('categoriesArray') as Array<object>;
     categories.forEach((category: any, index: number) => {
         for (const key of Object.keys(category)) {  
             formData.append(`categories[${index}][${key}]`, category[key]);
