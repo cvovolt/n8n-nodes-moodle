@@ -10,7 +10,7 @@ export class Moodle implements INodeType {
         version: 1,
         description: 'Moodle Rest API Node',
         defaults: {
-            name: 'Moodle Rest API',
+            name: 'Moodle',
         },
         //subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
         inputs: ['main'],
