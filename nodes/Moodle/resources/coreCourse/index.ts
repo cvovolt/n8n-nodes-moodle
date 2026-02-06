@@ -4,6 +4,7 @@ import { duplicateCourseOperation, duplicateCourseProperties } from "./duplicate
 import { getCategoriesOperation, getCategoriesProperties } from "./getCategories";
 import { getCoursesOperation, getCoursesProperties } from "./getCourses";
 import { getCoursesByFieldOperation, getCoursesByFieldProperties } from "./getCoursesByField";
+import { deleteCategoriesOperation, deleteCategoriesProperties } from "./deleteCategories";
 
 export const coreCourseResource: INodeProperties[] = [
     // Operations
@@ -23,6 +24,7 @@ export const coreCourseResource: INodeProperties[] = [
             getCoursesByFieldOperation,
             duplicateCourseOperation,
             createCategoriesOperation,
+            deleteCategoriesOperation,
         ],
         default: '',
     },
@@ -33,4 +35,5 @@ export const coreCourseResource: INodeProperties[] = [
     ...getCoursesByFieldProperties,
     ...duplicateCourseProperties,
     ...createCategoriesProperties,
+    ...deleteCategoriesProperties,
 ];
