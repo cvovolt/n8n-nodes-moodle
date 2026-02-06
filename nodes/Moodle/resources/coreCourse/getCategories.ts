@@ -4,6 +4,7 @@ import { SimpleFormData } from "../../utils/SimpleFormData";
 export const getCategoriesOperation: INodePropertyOptions = 
 {
     name: 'Get Categories',
+    action: 'Get Categories',
     value: 'core_course_get_categories',
     description: 'Get course categories',
     routing: {
@@ -71,7 +72,7 @@ async function requestOptions(this: IExecuteSingleFunctions, requestOptions: IHt
     const formData = new SimpleFormData();
     const paramNames = ['parent', 'idnumber'];
     paramNames.forEach((key, index) => {
-        const value = ((this.getNodeParameter(key) as string) || '').trim();
+        const value = (String(this.getNodeParameter(key)) || '').trim();
         if (value) {
             formData.append(`criteria[${index}][key]`, key);
             formData.append(`criteria[${index}][value]`, value);

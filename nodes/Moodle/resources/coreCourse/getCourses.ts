@@ -4,6 +4,7 @@ import { SimpleFormData } from "../../utils/SimpleFormData";
 export const getCoursesOperation: INodePropertyOptions = 
 {
     name: 'Get Courses',
+    action: 'Get Courses',
     value: 'core_course_get_courses',
     routing: {
         request: {

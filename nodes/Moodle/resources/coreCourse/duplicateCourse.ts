@@ -4,6 +4,7 @@ import { SimpleFormData } from "../../utils/SimpleFormData";
 export const duplicateCourseOperation: INodePropertyOptions = 
 {
     name: 'Duplicate Course',
+    action: 'Duplicate Course',
     value: 'core_course_duplicate_course',
     description: 'Duplicate a course',
     routing: {

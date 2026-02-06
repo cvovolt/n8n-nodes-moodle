@@ -4,8 +4,14 @@ import { SimpleFormData } from "../../utils/SimpleFormData";
 export const createCategoriesOperation: INodePropertyOptions = 
 {
     name: 'Create Categories',
+    action: 'Create Categories',
     value: 'core_course_create_categories',
     description: 'Create course categories',
+    displayOptions: {
+        show: {
+            resource: ['coreCourse'],
+        },
+    },
     routing: {
         request: {
             qs: {
